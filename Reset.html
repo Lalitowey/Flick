@@ -5,22 +5,38 @@
     <meta charset="utf-8" />
     <title>Forgot Password?</title>
     <link rel="stylesheet" href="design_layout.css">
+    <script>
+        function checkPassword(form) {
+            new_password = form.new_password.value;
+            confirm_new_password = form.confirm_new_password.value;
+            if (new_password == confirm_new_password)
+                print("Passwords do not match.");
+            else (new_password != confirm_new_password)
+                print('Matched!')
+
+        }
+    </script>
 </head>
 <body>
-    <form id="password_resetting_form">
-        <div id="notification">
-            <label for="new_password">New Password</label>
-            <input type="text" id="new_password" />
-            <label for="confirm_new_password">Type In New Password Again</label>
-            <input type="text" id="confirm_new_password" />
+    <form onsubmit="return checkPassword(this)">
+    </form>
+        <form class="password_resetting_class">
+            <div id="notification">
+                <label for="new_password">New Password</label>
+                <input type="password" id="new_password" />
+                <label for="confirm_new_password">Confirm Password</label>
+                <input type="password" id="new_password" />
 
-            <!--<button type="Apply">Reset Password</button>-->
-        </div>
+            </div>
 
-    </form> 
+        </form>
 
     <form action="Confirmination.html">
-        <button> Apply</button>
+        <button>Apply</button>
+    </form>
+
+</body>
+</html>
     </form>
 
 </body>
