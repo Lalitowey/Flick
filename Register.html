@@ -58,6 +58,17 @@ signUp.addEventListener('click',(e) => {
   var confirmPassword = document.getElementById('confirmPassword').value
   var username = document.getElementById('username').value;
 
+  if(
+      !/[A-Z]/.test(password) ||
+      !/[a-z]/.test(password) ||
+      !/\d/.test(password)
+    ) {
+      alert('Password must contain at least one lowercase, one uppercase, one number.');
+    return;
+
+  }
+
+
    if (password !== confirmPassword) {
     alert('Passwords do not match. Please try again.');
     return; // Exit the function if passwords don't match
