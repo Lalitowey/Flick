@@ -3,45 +3,33 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forgot Password?</title>
     <link rel="stylesheet" href="design_layout.css">
-    <script> //scripting for password matching and sending alerts on apply
-        function checkPassword(form) {
-            new_password = form.new_password.value;
-            confirm_new_password = form.confirm_new_password.value;
-            if (new_password == '')
-                alert("No password has been typed in");
-            else {
-                confirm_new_password == ''
-            }
-            alert("No password has been given");
-
-            elseif(new_password == confirm_new_password)
-            alert("Passwords do not match.");
-
-            if (new_password != confirm_new_password)
-            alert('Matched!')
-
-        }
-    </script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
+
 <body>
-    <form onsubmit="return checkPassword(this)">
+    <form action="index.html" method="post">
+        <label for="new_password">New Password</label>
+        <input type="password" id="new_password" />
+        <label for="confirm_new_password">Confirm New Password</label>
+        <input type="password" id="confirm_new_password" /> 
+    <!--adding a space to make it cleaner-->
+        <p>Click Apply When Done!</p>
+        <div>
+        <button type="submit" class="button" >Apply</button> </div>
     </form>
-    <form class="password_resetting_class">
-        <div id="notification">
-            <label for="new_password">New Password</label>
-            <input type="password" id="new_password" />
-            <label for="confirm_new_password">Confirm Password</label>
-            <input type="password" id="new_password" />
+   
+<!--setting up script for forgetting a password and using the database-->
+    <script src="script.js">
 
-        </div>
-
-    </form>
-
-    <form action="index.html">
-        <button>Apply</button>
-    </form>
+    </script>
+       
+   
 
 </body>
+
 </html>
