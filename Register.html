@@ -58,6 +58,11 @@ signUp.addEventListener('click',(e) => {
   var confirmPassword = document.getElementById('confirmPassword').value
   var username = document.getElementById('username').value;
 
+  if (password.length < 8 || password.length > 12) {
+    alert('Password must be between 8 and 12 charcters.');
+    return;
+  }
+
   if(
       !/[A-Z]/.test(password) ||
       !/[a-z]/.test(password) ||
@@ -65,9 +70,7 @@ signUp.addEventListener('click',(e) => {
     ) {
       alert('Password must contain at least one lowercase, one uppercase, one number.');
     return;
-
   }
-
 
    if (password !== confirmPassword) {
     alert('Passwords do not match. Please try again.');
@@ -88,6 +91,8 @@ signUp.addEventListener('click',(e) => {
     
     alert('user created!');
 
+    window.location.href = 'Login.html';
+
     // ...
  
   })
@@ -95,7 +100,7 @@ signUp.addEventListener('click',(e) => {
     const errorCode = error.code;
     const errorMessage = error.message;
 
-    alert('errorMessage');
+    alert(errorMessage);
     // ..
   });
 
