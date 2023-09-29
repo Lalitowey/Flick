@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
 </head>
 <body>
 
 <div id="login-box">
-	<div class="left">
-		<h1>Login</h1>
-		<input type="text" id="email" name="email" placeholder="E-mail" />
-		<input type="password" id="password" name="password" placeholder="Password" />
+  <div class="left">
+    <h1>Login</h1>
+    <input type="text" id="email" name="email" placeholder="E-mail" />
+    <input type="password" id="password" name="password" placeholder="Password" />
 
-		<input type="submit" id="login" name="login" value="Login" />
-    <input type="submit" id="logout" name="logout" value="Logout" />
-	</div>
+    <input type="submit" id="login" name="login" value="Login" />
+  </div>
 
   <div id= "ready">
   Dont have an account <a href="Register.html">Register here</a>
   </div>
 
-	</div>
+<div id="forgot">
+  <a href="Reset.html">Forgot Password</a>
+</div>
+
+
+  </div>
 </div>
 </body>
 
@@ -60,15 +64,10 @@ login.addEventListener('click',(e) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
-      const user = userCredential.user;
 
-      const dt = new Date
-      update(ref(database, 'users/' + user.uid),{
-        last_login: dt
+      alert('User loged in!');
 
-      })
-
-      alert('User loged in!')
+      window.location.href = 'Signout and Delete.html';
 
       // ...
     })
@@ -79,35 +78,6 @@ login.addEventListener('click',(e) => {
         alert(errorMessage);
         //..
     });
-
-
-});
-
-const user = auth.currentUser;
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/auth.user
-    const uid = user.uid;
-    // ...
-  } else {
-    // User is signed out
-    // ...
-  }
-});
-
-logout.addEventListener('click',(e) => {
-
-  signOut(auth).then(() => {
-  // Sign-out successful.
-    alert('user loged out');
-}).catch((error) => {
-  // An error happened.
-  const errorCode = error.message;
-    const errorMessage = error.message;
-
-    alert(errorMessage);
-});
 
 });
 
