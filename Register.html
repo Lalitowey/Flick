@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div id="login-box">
+<div id="Register-box">
   <div class="left">
     <h1>Sign up</h1>
     <input type="text" id="username" name="username" placeholder="Username" />
@@ -21,6 +21,9 @@
 
 <div id= "ready">
 Already have an account? <a href="login.html">Log In</a>
+</div>
+
+<div>
 </div>
 
 </div>
@@ -82,20 +85,18 @@ signUp.addEventListener('click',(e) => {
     // Signed in 
     const user = userCredential.user;
     
-    set(ref(database, 'users/' + user.uid),{
+    return set(ref(database, 'users/' + user.uid),{
       username: username,
       email: email
-
-
-    })
-    
+    });
+  })
+  .then(() => {
+  
     alert('user created!');
 
-    window.location.href = 'Login.html';
-
+    window.location.href = 'Signout and Delete.html';
     // ...
- 
-  })
+ })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -105,7 +106,6 @@ signUp.addEventListener('click',(e) => {
   });
 
 });
-
 
 </script>
 
