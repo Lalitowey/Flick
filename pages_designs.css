@@ -1,53 +1,90 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
-
-*,
-*::before
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+body {
+    height: 100vh;
+    width: 300px;
+    background-color:cornflowerblue;
 }
-/*css styling for Forgot Page*/
-body { 
-    height:100vh;
-    background-color:bisque
+h1 {
+    color: black;
+    -moz-transition: all 0.6s ease-in;
+    -o-transition: all 0.6s ease-in;
+    -webkit-transition: all 0.6s ease-in;
+    transition: all 0.6s ease-in;
+    position: center;
 }
-
-form {
-    background-color: azure; 
+h1:hover {
+    color: chartreuse;
+    text-shadow: 0px 0px 45px;
+    -moz-transition: all 0.6s ease-in;
+    -o-transition: all 0.6s ease-in;
+    -webkit-transition: all 0.6s ease-in;
+    transition: all 0.6s ease-in;
+}
+#login-box {
+    background-color: antiquewhite;
+    background-image: url("background_login.png");
+    background-size: 500px;
+    background-position: center top -100px;
+    width: 250px;
+    height: 300px;
+    padding: 50px 40px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 5px 10px yellow;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    font-size: 20px;
+}
+#login {
+    background-color: burlywood;
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+}
+#login:hover {
+    background-color:lightgreen;
+    transition: 0.6s;
+}
+#email {
+    width: 200px;
+    height: 20px;
+}
+#email:hover {
+    background-color: mediumspringgreen;
+    transition: 0.6s;
+}
+#password {
+    width: 200px;
+    height: 20px;
+}
+#password:hover {
+    background-color: mediumspringgreen;
+    transition: 0.6s;
+}
+#left {
+    background-color: azure;
     width: 350px;
     padding: 50px 40px;
     position: absolute;
-    transform:translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     box-shadow: 0 5px 10px blue;
     border-radius: 10px;
     font-style: italic;
-    font-size:20px;
+    font-size: 20px;
     color: ButtonText burlywood;
-    }
-
-label{
-     position: relative;
-     display:block;
-     margin-bottom: auto;
-    }
-
-.button {
-     width: 120px;
-     position: absolute;
-     background-color: wheat;
-     border-radius:20px;
-     font-display:auto;
-     font-style:italic;
-     font-size: 20px;
-     color:ButtonText burlywood;
-    }
-.button:hover {
-    background-color:lightgreen;
+}
+#forgot:hover {
+    background-color: mediumspringgreen;
     transition: 0.6s;
 }
-    
+a.link:hover {
+    background-color: mediumspringgreen;
+    transition: 0.6s;
+}
