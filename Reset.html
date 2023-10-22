@@ -4,61 +4,62 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylingLoginPage.css" />
     <title>Password Reset</title>
 </head>
 <body>
-<div id="left">
-    <h1>Password Reset</h1>
-    <input type="text" id="email" name="email" placeholder="E-mail" />
-    <input type="submit" id="forgot" name="forgot" value="Submit" />
-</div>
+    <div id="left">
+        <h1>Password Reset</h1>
+        <input type="text" id="email" name="email" placeholder="E-mail" />
+        <input type="submit" id="forgot" name="forgot" value="Submit" />
+        <p><a href="Login.Html" class="link">Click here to be redirected after reset!</a></p>
+    </div>
 </body>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-  import { getAuth, sendPasswordResetEmail  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCrXnG6H615rquhLI-hamYrz2GgLrflf2A",
-    authDomain: "flicker-8a847.firebaseapp.com",
-    databaseURL: "https://flicker-8a847-default-rtdb.firebaseio.com",
-    projectId: "flicker-8a847",
-    storageBucket: "flicker-8a847.appspot.com",
-    messagingSenderId: "24731055597",
-    appId: "1:24731055597:web:641a8977ab552fd98de3e4"
-  };
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCrXnG6H615rquhLI-hamYrz2GgLrflf2A",
+        authDomain: "flicker-8a847.firebaseapp.com",
+        databaseURL: "https://flicker-8a847-default-rtdb.firebaseio.com",
+        projectId: "flicker-8a847",
+        storageBucket: "flicker-8a847.appspot.com",
+        messagingSenderId: "24731055597",
+        appId: "1:24731055597:web:641a8977ab552fd98de3e4"
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app);
-  const auth = getAuth();
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
 
-forgot.addEventListener('click',(e) => {
-  var email = document.getElementById('email').value;
+    forgot.addEventListener('click', (e) => {
+        var email = document.getElementById('email').value;
 
-sendPasswordResetEmail(auth, email)
-  .then(() => {
-    // Password reset email sent!
-    // ..
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                // Password reset email sent!
+                // ..
 
-    alert('Password Reset as been sent')
+                alert('Password Reset as been sent')
 
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
 
-});
+    });
 
 
 
 </script>
-</html>
