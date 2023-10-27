@@ -1,3 +1,5 @@
+/* h# classes relate to the headers in our HTML file. From here we can modify parameters as needed.
+(color/ font/ text size/ etc.  */
 h1 {
     font-family: helvetica;
     font-size: 400%;
@@ -10,7 +12,10 @@ h2 {
     color: white;
 }
 
-.tag-cloud {
+
+
+/* These classes and sub classes are for adjusting the style of the genre buttons. */
+.genre-button {
     display: inline-block;
     color: white;
     padding: 8px 20px;
@@ -22,27 +27,64 @@ h2 {
     opacity: 1;
     transition: 0.3s;
 }
-.tag-cloud:hover {
+.genre-button:hover {
     color: white;
     opacity: 0.7
 }
-.tag-cloud:active {
+.genre-button:active {
     background-color: #153243;
 }
-.tag-cloud:focus {
+.genre-button:focus {
     background-color: #153243;
 }
 
-button {
+
+
+/* These classes and sub classes are for adjusting the style of the poster buttons. */
+.poster-button {
+    margin: 10px;
+    /* padding: 1vh .5vw; */
+    display: inline-block;
     cursor: default;
     border: none;
     background: transparent;
+}
+    .poster-button:hover {
+        color: white;
+        opacity: 0.7
+    }
+
+    .poster-image {
+        width: 240px;
+        height: 360px;
+    }
+
+/* This is the styling for the continue button at the bottom of the page. should be similar to genre buttons for consistency,
+may modify in the future to signify different functionality. */
+button {
+    display: inline-block;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    background-color: #498AB5;
+    margin-top: 8px;
+    font-family: helvetica;
+    cursor: default;
+    opacity: 1;
+    transition: 0.3s;
 }
     button:hover {
         color: white;
         opacity: 0.7
     }
+    button:active {
+        background-color: #153243;
+    }
+    button:focus {
+        background-color: #153243;
+    }
 
+/* this body class currently only holds the bg image and related parameters. */
 body {
     background-image: url("https://images.squarespace-cdn.com/content/v1/52e81a1ee4b047d1a5cc6e65/b2d4c840-d178-4ed8-acf2-30759159d4d5/Background-Narrow.jpg");
     background-color: #cccccc;
