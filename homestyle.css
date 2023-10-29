@@ -1,100 +1,171 @@
-body {
-    margin: 0;
+body 
+{
     font-family: Arial, Helvetica, sans-serif;
     background-color: #1D3557;
+    overflow: hidden;
 }
 
 /* this centers the flick logo */
-.center {
+.center 
+{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 25%;
 }
+
 /* Add a black background color to the top navigation */
-.topnav {
+.topnav 
+{
     background-color: #A8DADC;
     overflow: hidden;
+    border-style: solid;
+    border-color: #111;
+    border-width: 5px;
 }
 
-.button {
-    background-color: #F1FAEE;
+/* The sidebar menu */
+.sidenav 
+{
+    height: 100%; 
+    width: 500px; 
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    overflow-y: scroll;
+    padding-top: 150px;
+    border-right-style: solid;
+    border-color: #111;
+    border-width: 5px;
+}
+
+/* The navigation menu links */
+.sidenav a 
+{
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #999;
+    display: block;
+}
+  
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover 
+{
+    color: #fcd630;
+}
+  
+/* Style page content */
+.main 
+{
+    margin-left: 160px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+.button
+{
+    background-color: #888;
     border: none;
     color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 30px;
     margin: 4px 2px;
     cursor: pointer;
     position: relative;
     top: 45%;
     left: 47.5%;
-  }
+}
 
-  .like{
-    border-radius: 50%;
+.button:hover {background-color: #fff}
+
+.button:active 
+{
+  box-shadow: 0 5px #333;
+  transform: translateY(4px);
+}
+
+.like
+{
+    background-color: #00ff00;
+    border-radius: 20%;
     bottom: auto;
 }
-  .dislike{
-    border-radius: 50%;
-}
 
+.dislike
+{
+    background-color: #ff0000;
+    border-radius: 20%;
+    bottom: auto;           /* Added this */
+}
 
 /* Add CSS styles to create the stacked effect */
-.poster-container {
+.poster-container 
+{
     position: relative;
     top: 40%;
-  left: 40%;
-  
+    left: 37.5%;
 }
 
-.poster-image {
+.poster-image 
+{
     position: absolute;
-    width: 360px;
-    height: 540px;
-    border: none; 
+    width: 450px;
+    height: 675px;
+    border: none;
 }
 
 /* Style the images based on their index */
-.poster-image:nth-child(odd) {
+.poster-image:nth-child(odd) 
+{
     top: 15px;
     left: 15px;
 }
 
 /* Ensure that at least 5 cards are visible on the stack */
-.poster-image:nth-child(n + 6) {
+.poster-image:nth-child(n + 6) 
+{
     display: none;
 }
 
+/* Filled out container */
+.container
+{
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+}
 
+.button-container
+{
+    position: absolute;
+    left: 41.5%;
+    bottom: 20px;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    display: flex;
+}
 
-.button-container{
-position: fixed;
-  left: 50%;
-  bottom: 20px;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
-  display: flex;
-  }
-
-h1 {
+h1 
+{
     font-family: helvetica;
     font-size: 400%;
     color:black;
 }
 
-h2 {
+h2 
+{
     font-family: helvetica;
     font-size: 200%;
     color: black;
 }
 
-.container {
-}
-
-.navbar {
+.navbar 
+{
     width: 300px;
     height: 100%;
     background-color: #262626;
@@ -109,11 +180,14 @@ h2 {
     z-index: 100;
 }
 
-.change {
+.change 
+{
     right: 0;
 }
 
-.hamburger-menu {
+.hamburger-menu 
+{
+    background-color: none;
     width: 35px;
     height: 30px;
     position: fixed;
@@ -125,36 +199,44 @@ h2 {
     justify-content: space-around;
 }
 
-
-.line{
+.line
+{
     width: 100%;
     height: 3px;
-    background-color: #F1FAEE;
+    background-color: #333;
     transition: all 0.8s;
 }
 
-.change .line-1 {
+.change .line-1 
+{
     transform: rotateZ(-405deg) translate(-8px, 6px);
+    background-color: #fff;
 }
 
-.change .line-2{
+.change .line-2
+{
     opacity: 0;
 }
 
-.change .line-3 {
+.change .line-3 
+{
     transform: rotateZ(405deg) translate(-8px, -6px);
+    background-color: #fff;
 }
 
-.nav-list {
+.nav-list 
+{
     text-align: right;
 }
 
-.nav-item {
+.nav-item 
+{
     list-style: none;
     margin: 25px;
 }
 
-.nav-link {
+.nav-link 
+{
     text-decoration: none;
     font-size: 22px;
     color: #eee;
@@ -166,8 +248,13 @@ h2 {
 
 }
 
-.nav-link::before,
-.nav-link::after {
+.nav-link:hover         /* Added this */
+{
+    color: #fcd630;
+}
+
+.nav-link::before, .nav-link::after 
+{
     content: "";
     width: 100%;
     height: 2px;
@@ -178,17 +265,19 @@ h2 {
     transition: transform 0.5s;
 }
 
-.nav-link::after {
+.nav-link::after 
+{
     bottom: 0;
     transform-origin: right;
 }
 
-.nav-link::before {
+.nav-link::before 
+{
     top: 0;
     transform-origin: left;
 }
 
-.nav-link:hover::before
-.nav-link:hover::after {
+.nav-link:hover::before .nav-link:hover::after 
+{
     transform: scaleX(1);
 }
