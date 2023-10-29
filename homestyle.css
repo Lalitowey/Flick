@@ -103,14 +103,14 @@ body
 .poster-container 
 {
     position: relative;
-    left: 37.5%;
+    left: 5%;
 }
 
 .poster-image 
 {
     position: absolute;
-    width: 300px;
-    border: none;
+    width: 500px;
+    border: 1none;
 }
 
 /* Style the images based on their index */
@@ -137,7 +137,7 @@ body
 .button-container
 {
     position: absolute;
-    right: 450px;
+    right: 910px;
     bottom: 20px;
     margin: auto;
     display: flex;
