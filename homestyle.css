@@ -28,11 +28,11 @@ body
 /* The sidebar menu */
 .sidenav 
 {
-    height: 100%; 
     width: 500px; 
     position: fixed;
     z-index: 0;
-    top: 0;
+    top: 15%;
+    bottom: -25%;
     left: 0;
     background-color: #333;
     overflow-y: scroll;
