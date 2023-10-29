@@ -4,6 +4,7 @@ body
     background-color: #1D3557;
     overflow: hidden;
     margin: 0;
+    height: 100vh;
 }
 
 /* this centers the flick logo */
@@ -28,12 +29,7 @@ body
 /* The sidebar menu */
 .sidenav 
 {
-    width: 500px; 
-    position: fixed;
-    z-index: 0;
-    top: 20%;
-    bottom: -25%;
-    left: 0;
+    height: 100%; 
     background-color: #333;
     overflow-y: scroll;
     border-right-style: solid;
@@ -107,15 +103,13 @@ body
 .poster-container 
 {
     position: relative;
-    top: 40%;
     left: 37.5%;
 }
 
 .poster-image 
 {
     position: absolute;
-    width: 450px;
-    height: 675px;
+    width: 300px;
     border: none;
 }
 
@@ -143,9 +137,8 @@ body
 .button-container
 {
     position: absolute;
-    left: 45%;
+    right: 450px;
     bottom: 20px;
-    transform: translate(-50%, -50%);
     margin: auto;
     display: flex;
 }
@@ -198,6 +191,23 @@ h2
     flex-direction: column;
     justify-content: space-around;
 }
+
+.bottom-contanier{
+    height: 100%;
+}
+
+.left-container{
+    height: 100%;
+    width: 35%;
+    float: left;
+}
+
+.right-container {
+    height: 100%;
+    width: 65%;
+    float: right;
+}
+
 
 .line
 {
