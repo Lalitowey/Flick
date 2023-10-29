@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1D3557;
+}
+
+/* this centers the flick logo */
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #A8DADC;
+    overflow: hidden;
+}
+
+.button {
+    background-color: #F1FAEE;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    position: relative;
+    top: 45%;
+    left: 47.5%;
+  }
+
+  .like{
+    border-radius: 50%;
+    bottom: auto;
+}
+  .dislike{
+    border-radius: 50%;
+}
+
+
+/* Add CSS styles to create the stacked effect */
+.poster-container {
+    position: relative;
+    top: 40%;
+  left: 40%;
+  
+}
+
+.poster-image {
+    position: absolute;
+    width: 360px;
+    height: 540px;
+    border: none; 
+}
+
+/* Style the images based on their index */
+.poster-image:nth-child(odd) {
+    top: 15px;
+    left: 15px;
+}
+
+/* Ensure that at least 5 cards are visible on the stack */
+.poster-image:nth-child(n + 6) {
+    display: none;
+}
+
+
+
+.button-container{
+position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  display: flex;
+  }
+
+h1 {
+    font-family: helvetica;
+    font-size: 400%;
+    color:black;
+}
+
+h2 {
+    font-family: helvetica;
+    font-size: 200%;
+    color: black;
+}
+
+.container {
+}
+
+.navbar {
+    width: 300px;
+    height: 100%;
+    background-color: #262626;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20% 0 0 60%;
+    transition: right .8s cubic-bezier(1, 0, 0, 1);
+    z-index: 100;
+}
+
+.change {
+    right: 0;
+}
+
+.hamburger-menu {
+    width: 35px;
+    height: 30px;
+    position: fixed;
+    top: 30px;
+    right: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.line{
+    width: 100%;
+    height: 3px;
+    background-color: #F1FAEE;
+    transition: all 0.8s;
+}
+
+.change .line-1 {
+    transform: rotateZ(-405deg) translate(-8px, 6px);
+}
+
+.change .line-2{
+    opacity: 0;
+}
+
+.change .line-3 {
+    transform: rotateZ(405deg) translate(-8px, -6px);
+}
+
+.nav-list {
+    text-align: right;
+}
+
+.nav-item {
+    list-style: none;
+    margin: 25px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 22px;
+    color: #eee;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 3px 0;
+
+}
+
+.nav-link::before,
+.nav-link::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #262626;
+    position: absolute;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}
+
+.nav-link::after {
+    bottom: 0;
+    transform-origin: right;
+}
+
+.nav-link::before {
+    top: 0;
+    transform-origin: left;
+}
+
+.nav-link:hover::before
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
