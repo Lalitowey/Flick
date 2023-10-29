@@ -8,6 +8,7 @@ const options = {
     }
   };
 
+//populates center
   fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc', options)
     .then(response => response.json())
     .then(data => {
@@ -30,6 +31,31 @@ const options = {
                 if (index >= 4) {
                     return;
                 }
+            }
+        });
+    })
+    .catch(err => console.error(err));
+
+//populates sidebar
+
+    const postersSidenav = document.getElementById('movie-posters-sidenav');
+
+fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc', options)
+    .then(response => response.json())
+    .then(data => {
+        const movieList = data.results;
+
+        movieList.forEach((movie, index) => {
+            if (movie.poster_path && index < 18) {
+                const posterUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+
+                // Create an image element for the poster
+                const imgElement = document.createElement('img');
+                imgElement.src = posterUrl;
+                imgElement.alt = movie.title;
+                imgElement.className = 'sidenav-poster';
+
+                postersSidenav.appendChild(imgElement);
             }
         });
     })
