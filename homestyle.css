@@ -53,7 +53,19 @@ body
 {
     color: #fcd630;
 }
-  
+
+.sidenav-poster {
+    display: inline-block;
+    width: 200px; /* Adjust the width as needed */
+    height: 300px; /* Adjust the height as needed */
+    margin: 5px;
+    border: 1px solid #333; /* Add a border around each poster */
+}
+.sidenav-poster:hover {
+    transform: scale(1.1); /* Increase size on hover */
+    transition: transform 0.2s;
+}
+
 /* Style page content */
 .main 
 {
