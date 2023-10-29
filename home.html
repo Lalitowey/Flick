@@ -12,6 +12,15 @@
 <link href="homestyle.css" rel="stylesheet" />
 
 <body>
+    
+    <div class="sidenav">               <!-- These are the selectables on the sidebar -->
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class ="container">
         <nav class="navbar">
             <div class="hamburger-menu">
                 <div class = "line line-1"></div>
@@ -28,23 +37,21 @@
                 </li>
             </ul>
         </nav>
-
-    <h1></h1>
-    <input type="button" class="button" value="Seen">
+    </div>   
 
     <h2></h2>
     <div class="poster-container" id="poster-container" class="center">
         <!-- Movie posters will be inserted here dynamically -->
     </div>
     <script src="homeindex.js"></script>
-
-
-    <a div class="button-container">
-        <div class="center">
-            <button class="button like">🤍</button>
-            <button class="button dislike">⤫</button>
+    
+    <div class="container">                                 <!-- Using these two classes as follows, the buttons are now aligned left to right -->
+        <a div class="button-container">
+            <button class="button like">👍</button>
+            <input type="button" class="button focus" value="Seen" onclick="window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ','_blank')">
+            <button class="button dislike">👎</button>
         </div>
-      </div>
+    </div>
     
 
 </body>
