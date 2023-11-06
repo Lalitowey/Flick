@@ -30,7 +30,7 @@ body
 /* The sidebar menu */
 .sidenav 
 {
-    height: 100%; 
+    height: 100%;
     background-color: #333;
     overflow-y: scroll;
     border-right-style: solid;
@@ -75,19 +75,16 @@ body
 
 .button
 {
+    position: relative;
     background-color: #888;
-    border: none;
     color: black;
-    padding: 15px 32px;
+    border: none;
+    padding: 1vb 3vb;
+    font-size: 5vb;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 30px;
-    margin: 4px 2px;
     cursor: pointer;
-    position: relative;
-    top: 45%;
-    left: 47.5%;
 }
 
 .button:hover {background-color: #fff}
@@ -101,6 +98,7 @@ body
 .like
 {
     background-color: #00ff00;
+    margin-left: 5vb;
     border-radius: 20%;
     bottom: auto;
 }
@@ -108,6 +106,7 @@ body
 .dislike
 {
     background-color: #ff0000;
+    margin-right: 5vb;
     border-radius: 20%;
     bottom: auto;           /* Added this */
 }
@@ -116,14 +115,16 @@ body
 .poster-container 
 {
     position: relative;
+    max-width: 500px;
+    height: 70%;
     left: 5%;
 }
 
 .poster-image 
 {
     position: absolute;
-    width: 25vw;
-    border: 1none;
+    width: 45vb;
+    border: none;
 }
 
 /* Style the images based on their index */
@@ -149,10 +150,10 @@ body
 
 .button-container
 {
-    position: absolute;
-    right: 910px;
-    bottom: 20px;
-    margin: auto;
+    position: relative;
+    top: 10%;
+    left: 8.5%;
+    margin:1 auto;
     display: flex;
 }
 
@@ -206,7 +207,7 @@ h2
 }
 
 .bottom-contanier{
-    height: 100%;
+    height: 87.5%;
 }
 
 .left-container{
