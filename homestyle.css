@@ -115,8 +115,9 @@ body
 .poster-container 
 {
     position: relative;
-    max-width: 500px;
-    height: 70%;
+    height: 70vb;
+    width: 50vb;
+    margin-bottom: 3vb;
     left: 5%;
 }
 
@@ -151,7 +152,6 @@ body
 .button-container
 {
     position: relative;
-    top: 10%;
     left: 8.5%;
     margin:1 auto;
     display: flex;
@@ -206,19 +206,22 @@ h2
     justify-content: space-around;
 }
 
-.bottom-contanier{
-    height: 87.5%;
+.bottom-contanier
+{
+    height: 100%;
 }
 
-.left-container{
+.left-container
+{
     height: 100%;
-    width: 35%;
+    width: 33.5%;
     float: left;
 }
 
-.right-container {
+.right-container
+{
     height: 100%;
-    width: 65%;
+    width: 66.5%;
     float: right;
 }
 
