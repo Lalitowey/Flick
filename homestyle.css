@@ -1,4 +1,4 @@
-body 
+body                /*Mix of body and tinder classes*/
 {
     display: flex;
     flex-direction: column;
@@ -79,7 +79,7 @@ body
     transition: transform 0.2s;
 }
 
-.button
+.button                 /*Comparable to tinder--buttons button*/
 {
     position: relative;
     background-color: #888;
@@ -93,7 +93,7 @@ body
     cursor: pointer;
 }
 
-.button-container
+.button-container       /*Comparable to tinder--buttons class*/
 {
     position: relative;
     left: 8.5%;
@@ -109,7 +109,7 @@ body
   transform: translateY(4px);
 }
 
-.like
+.like               /*Comparable to fa-heart*/
 {
     background-color: #00ff00;
     margin-left: 5vb;
@@ -117,7 +117,7 @@ body
     bottom: auto;
 }
 
-.dislike
+.dislike            /*Comparable to fa-remove*/
 {
     background-color: #ff0000;
     margin-right: 5vb;
@@ -126,7 +126,7 @@ body
 }
 
 /* Add CSS styles to create the stacked effect */
-.poster-container 
+.poster-container                                   /*Comparable to tinder--card*/
 {
     position: relative;
     height: 70vb;
