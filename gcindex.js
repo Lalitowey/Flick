@@ -102,4 +102,14 @@ fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
         limitCheckboxes(posterButtons, 5);
     })
     .catch(err => console.error(err));
-  
+
+let selectedGenres = [];
+function getUserGenreChoices() {
+
+    var checkboxes = document.getElementsByClassName('genre-checkbox');
+    for(var i = 0; i < checkboxes.length; i++){
+        if (checkboxes[i].checked == true)
+            selectedGenres.push(checkboxes[i].id);
+    }
+    localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
+}
