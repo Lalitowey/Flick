@@ -73,19 +73,37 @@ class Card {
 		this.element.style.transform = '';
 	}
 
-	#cloneCard = () => {
-	  const clonedCard = this.element.cloneNode(true);
-	  
-	  // Remove the dismissing class and transform style
-	  clonedCard.classList.remove('dismissing');
-	  clonedCard.style.transition = '';
-	  clonedCard.style.transform = '';
+	 #cloneCard = () => {
+        const clonedCard = this.element.cloneNode(true);
 
-	  // Add a class or modify styles as needed for the left container
-	  clonedCard.classList.add('liked-card');
+        // Remove the dismissing class and transform style
+        clonedCard.classList.remove('dismissing');
+        clonedCard.style.transition = '';
+        clonedCard.style.transform = '';
 
-	  return clonedCard;
-	}
+        // Add a class or modify styles as needed for the left container
+        clonedCard.classList.add('liked-card');
+
+        // Add a click event listener for removal
+        clonedCard.addEventListener('click', () => {
+            const confirmRemove = window.confirm('Remove from watch list?');
+            if (confirmRemove) {
+                this.#removeClonedCard(clonedCard);
+            }
+        });
+
+        return clonedCard;
+    }
+
+    #removeClonedCard = (cardToRemove) => {
+        // Remove the clicked cloned card from the left container
+        cardToRemove.remove();
+
+        // Trigger onDismiss callback if provided
+        if (typeof this.onDismiss === 'function') {
+            this.onDismiss();
+        }
+    }
 
 	#dissmiss = (direction) => {
 		this.#startPoint = null;
