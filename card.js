@@ -129,10 +129,10 @@ class Card {
 			console.log('like')
 
 			 saveLikedCardsToLocalStorage(this.imageUrl);
-			 window.location.reload();
-			const likedCardsContainer = document.getElementById('liked-cards-container');
-    		const clonedCard = this.#cloneCard();
-    		likedCardsContainer.appendChild(clonedCard);
+			setTimeout(function() {
+			  // Refresh the window after the delay
+			  window.location.reload();
+			}, 1000);
 		}
 
 	}
