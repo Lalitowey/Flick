@@ -151,6 +151,9 @@
               // Delete the user's data from the database
               remove(userRef).then(() => {
                 user.delete().then(() => {
+                  // Remove liked cards from local storage
+                  localStorage.removeItem('likedCards');
+
                   // Account deletion successful, Replace with your login page URL
                   alert('Account deleted');
                   window.location.href = 'login.html';
