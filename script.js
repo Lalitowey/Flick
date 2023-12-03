@@ -11,7 +11,7 @@ const urls = [];
 
 
 //variables
-let cardCount = 0;
+let cardCount = parseInt(localStorage.getItem('cardCount')) || 0;
 
 //functions
 function fetchImages() {
@@ -60,6 +60,9 @@ function appendNewCard() {
   cards.forEach((card, index) => {
     card.style.setProperty('--i', index);
   });
+
+  // Save cardCount to localStorage
+  localStorage.setItem('cardCount', cardCount.toString());
 }
 
 // Initial fetch and card creation
