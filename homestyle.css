@@ -1,37 +1,41 @@
 body                /*Mix of body and tinder classes*/
 {
-    display: flex;
-    flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #1D3557;
     overflow: hidden;
     margin: 0;
 }
 
-.bottom-contanier
+.bottom-container
 {
     position: relative;
     display: flex;
     align-items: flex-end;
     width: 100vw;
-    height: calc(90vh - 10px);
+    height: calc(100vh - 10vh);
 }
 
 .left-container
 {
     height: inherit;
     width: 33.5%;
-    float: left;
+    background-color: #333;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .right-container
 {
     height: inherit;
     width: 66.5%;
-    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-/* this centers the flick logo */
+/* this centers the flick logo
 .center 
 {
     display: block;
@@ -39,69 +43,52 @@ body                /*Mix of body and tinder classes*/
     margin-right: auto;
     height: 10vh;
     width: 20vw;
-}
+} */
 
 /* Add a black background color to the top navigation */
-.topnav 
+.header
 {
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 10vh;
     background-color: #A8DADC;
     overflow: hidden;
-    border-top: solid;
+    /* border-top: solid;
     border-bottom: solid;
     border-color: #111;
-    border-width: 5px;
+    border-width: 5px; */
 }
 
-/* The sidebar menu */
-.sidenav 
-{
-    height: 100%;
-    background-color: #333;
-    overflow-y: scroll;
-    border-right-style: solid;
-    border-color: #111;
-    border-width: 5px;
-}
-
-.sidenav-poster 
-{
-    display: inline-block;
-    width: 10vw; /* Adjust the width as needed */
-    height: 15vw; /* Adjust the height as needed */
-    margin: 5px;
-    border: 1px solid #333; /* Add a border around each poster */
-}
-.sidenav-poster:hover 
-{
-    transform: scale(1.1); /* Increase size on hover */
-    transition: transform 0.2s;
+.logo{
+    height: 50px;
 }
 
 .button                 /*Comparable to tinder--buttons button*/
 {
-    position: relative;
-    background-color: #888;
-    color: black;
-    border: none;
-    padding: 1vb 3vb;
-    font-size: 5vb;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    width: 60px;
+    height: 60px;
+    display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.5s;
 }
 
 .button-container       /*Comparable to tinder--buttons class*/
 {
-    position: relative;
-    left: 8.5%;
-    margin:1 auto;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
 }
 
-.button:hover {background-color: #fff}
+.like:hover {background-color: #60a8ab}
+
+.dislike:hover {background-color: #555}
 
 .button:active 
 {
@@ -111,70 +98,41 @@ body                /*Mix of body and tinder classes*/
 
 .like               /*Comparable to fa-heart*/
 {
-    background-color: #00ff00;
-    margin-left: 5vb;
-    border-radius: 20%;
-    bottom: auto;
+    background-color: #A8DADC;
+    /* margin-left: 5vb; */
+    border-radius: 12px;
+    /* bottom: auto; */
 }
 
 .dislike            /*Comparable to fa-remove*/
 {
-    background-color: #ff0000;
-    margin-right: 5vb;
+    background-color: #333;
+    /* margin-right: 5vb; */
     border-radius: 20%;
-    bottom: auto;           /* Added this */
+    /* bottom: auto;           Added this */
 }
 
-/* Add CSS styles to create the stacked effect */
-.poster-container                                   /*Comparable to tinder--card*/
-{
-    position: relative;
-    height: 70vb;
-    width: 50vb;
-    margin-bottom: 3vb;
-    left: 5%;
+.minus-sign{
+    background-color: #A8DADC;
+    width: 40px;
+    height: 10px;
+    border-radius: 10px;
 }
 
-.poster-image 
-{
+.plus-sign1{
+    background-color: #333;
+    width: 40px;
+    height: 10px;
+    border-radius: 10px;
+}
+
+.plus-sign2{
+    background-color: #333;
+    width: 40px;
+    height: 10px;
+    border-radius: 10px;
+    transform: rotate(90deg);
     position: absolute;
-    width: 45vb;
-    border: none;
-}
-
-/* Style the images based on their index */
-.poster-image:nth-child(odd) 
-{
-    top: 15px;
-    left: 15px;
-}
-
-/* Ensure that at least 5 cards are visible on the stack */
-.poster-image:nth-child(n + 6) 
-{
-    display: none;
-}
-
-/* Filled out container */
-.container
-{
-    width: 500px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-h1 
-{
-    font-family: helvetica;
-    font-size: 400%;
-    color:black;
-}
-
-h2 
-{
-    font-family: helvetica;
-    font-size: 200%;
-    color: black;
 }
 
 .navbar 
@@ -201,28 +159,30 @@ h2
 .hamburger-menu 
 {
     background-color: none;
-    width: 5vw;
-    height: 5vh;
+    width: 50px;
+    height: 40px;
     position: fixed;
-    top: 3vh;
-    right: 3vw;
+    top: 25px;
+    right: 30px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 200;
 }
 
 .line
 {
-    width: 80%;
-    height: .5vh;
+    width: 50px;
+    height: 5px;
     background-color: #333;
     transition: all 0.8s;
 }
 
 .change .line-1 
 {
-    transform: rotateZ(-405deg) translate(0vw, 2.3vh);
+    transform: rotateZ(-405deg) translate(0vw, 1.1em);
     background-color: #fff;
 }
 
@@ -233,7 +193,7 @@ h2
 
 .change .line-3 
 {
-    transform: rotateZ(405deg) translate(0vw, -2.3vh);
+    transform: rotateZ(405deg) translate(0vw, -1.1em);
     background-color: #fff;
 }
 
@@ -294,4 +254,314 @@ h2
 .nav-link:hover::before .nav-link:hover::after 
 {
     transform: scaleX(1);
+}
+
+#swiper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    aspect-ratio: 2 / 3;
+    perspective: 600px;
+    perspective-origin: center 50%;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
+    transform: translateZ(calc(-30px * var(--i)))
+        translateY(calc(-20px * var(--i))) rotate(calc(-1deg * var(--i)));
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    -webkit-user-select: none; /* Added for Safari support */
+    user-select: none; /* Added for compatibility */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.left-container .card {
+    display: inline-block;
+    width: 10vw;
+    height: 15vw;
+    margin: 3px;
+    /* border: 1px solid #333; */
+}
+
+.liked-cards-container
+{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1px;
+}
+
+.left-container .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.liked-card {
+  position: relative; /* or any other desired position */
+  /* Add other styles as needed */
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        width: 100%;
+        height: 5vh;
+        top: 0;
+        left: 0;
+        z-index: 100;
+    }
+
+    .logo{
+        height: 30px;
+    }
+
+    .hamburger-menu {
+        position: fixed;
+        top: 10px;
+        right: 25px;
+        width: 40px;
+        height: 25px;
+        z-index: 200;
+    }
+
+    .line{
+        width: 30px;
+        height: 4px;
+        transition: all 0.8s;
+    }
+
+    .change .line-1 
+    {
+        transform: rotateZ(-405deg) translate(0vw, .58em);
+        background-color: #fff;
+    }
+
+    .change .line-3 
+    {
+        transform: rotateZ(405deg) translate(0vw, -.68em);
+        background-color: #fff;
+    }
+
+    .bottom-container
+    {
+        height: calc(100vh - 5vh);
+        flex-direction: column-reverse;
+    }
+
+    .left-container
+    {
+        width: 100%;
+        height: 45%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .right-container
+    {
+        width: 100%;
+        height: 55%;
+    }
+
+    /* .liked-cards-container
+    {
+        width: 100%;
+        height: 50%;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;j
+    } */
+    
+    .button-container
+    {
+        padding: 10px;
+    }
+
+    .button
+    {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .minus-sign{
+        width: 30px;
+        height: 7px;
+    }
+
+    .plus-sign1{
+        width: 30px;
+        height: 7px;
+    }
+
+    .plus-sign2{
+        width: 30px;
+        height: 7px;
+    }
+
+    .navbar 
+    {
+        width: 35%;
+        height: 100%;
+        background-color: #262626;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5% 0 0 5%;
+        transition: right .8s cubic-bezier(1, 0, 0, 1);
+        z-index: 100;
+    }
+
+    .change 
+    {
+        right: 0;
+    }
+
+    .nav-list 
+    {
+        text-align: center;
+    }
+
+    .nav-item 
+    {
+        list-style: none;
+        margin: 25px;
+    }
+
+    .nav-link 
+    {
+        text-align: center;
+        text-decoration: none;
+        font-size: 12px;
+        color: #eee;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        padding-right: 3px;
+    
+    }
+
+    .nav-link:hover         /* Added this */
+    {
+        color: #fcd630;
+    }
+
+    .nav-link::before, .nav-link::after 
+    {
+        content: "";
+        width: 45%;
+        height: 2px;
+        background-color: #262626;
+        position: absolute;
+        left: 0;
+        transform: scaleX(0);
+        transition: transform 0.5s;
+    }
+    
+    .nav-link::after 
+    {
+        bottom: 0;
+        transform-origin: right;
+    }
+
+    .nav-link::before 
+    {
+        top: 0;
+        transform-origin: left;
+    }
+
+    .nav-link:hover::before .nav-link:hover::after 
+    {
+        transform: scaleX(1);
+    }
+
+    #swiper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 65%;
+        aspect-ratio: 2 / 3;
+        perspective: 300px;
+        perspective-origin: center 50%;
+        transform-style: preserve-3d;
+        position: relative;
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 3px;
+        overflow: hidden;
+        transform: translateZ(calc(-30px * var(--i)))
+            translateY(calc(-20px * var(--i))) rotate(calc(-1deg * var(--i)));
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        cursor: pointer;
+        -webkit-user-select: none; /* Added for Safari support */
+        user-select: none; /* Added for compatibility */
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+    }
+
+    .left-container .card {
+        width: 15vw;
+        height: 20vw;
+        margin: 3px;
+        /* border: 1px solid #333; */
+    }
+
+    .liked-cards-container
+    {
+        width: 100%;
+        height: 50%;
+        /* overflow-y: auto; */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .left-container .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+    }
+
+    .liked-card {
+      position: relative; /* or any other desired position */
+      /* Add other styles as needed */
+    }
+
 }
