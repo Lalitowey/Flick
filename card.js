@@ -110,10 +110,23 @@ class Card {
 			this.onLike();
 			console.log('like')
 
+			 saveLikedCardsToLocalStorage(this.imageUrl);
+
 			const likedCardsContainer = document.getElementById('liked-cards-container');
     		const clonedCard = this.#cloneCard();
     		likedCardsContainer.appendChild(clonedCard);
 		}
 
 	}
+}
+
+function saveLikedCardsToLocalStorage(cardUrl) {
+  // Get the current liked cards from local storage or initialize an empty array
+  const likedCards = JSON.parse(localStorage.getItem('likedCards')) || [];
+
+  // Add the new card URL to the liked cards array
+  likedCards.push(cardUrl);
+
+  // Save the updated liked cards array back to local storage
+  localStorage.setItem('likedCards', JSON.stringify(likedCards));
 }
