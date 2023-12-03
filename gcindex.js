@@ -1,3 +1,4 @@
+
 // this options variable allows us to implement our authorization token in one spot
 // as the token can expire at any point, this lets us quickly update the key if need-be. :)
 const options = {
@@ -10,6 +11,8 @@ const options = {
 
 // variable for keeping track of active posters
 let selectedPosterCount = 0;
+
+
 
 // this function limits the number of selected genre checkboxes
 function limitCheckboxes(checkboxes, limit) {
@@ -38,6 +41,8 @@ function fetchGenresAndCreateCheckboxes() {
                 genreCheckbox.type = 'checkbox';
                 genreCheckbox.id = `genre-${genre.id}`;
                 genreCheckbox.className = 'genre-checkbox';
+
+
 
                 const genreLabel = document.createElement('label');
                 genreLabel.textContent = genre.name;
@@ -102,4 +107,23 @@ fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
         limitCheckboxes(posterButtons, 5);
     })
     .catch(err => console.error(err));
-  
+
+
+let selectedGenres = [];
+function getUserGenreChoices() {
+
+    var checkboxes = document.getElementsByClassName('genre-checkbox');
+    for(var i = 0; i < checkboxes.length; i++){
+        if (checkboxes[i].checked == true)
+            selectedGenres.push(checkboxes[i].id);
+    }
+    localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
+    console.log(selectedGenres);
+
+}
+
+
+
+// export {selectedGenres};
+// document.getElementById('continue-button').addEventListener('click', getUserGenreChoices);
+// console.log(document.getElementById('continue-button'));

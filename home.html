@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <head>
-    <div class="topnav">
-      <div class="header">
-          <img src="flickworld.png" alt="logo" class="center"/>
-      </div>
-    </div>
-  </head>
-
+  <title>Home</title>
   <link href="homestyle.css" rel="stylesheet" />
+</head>
 
-  <body>
-    <div>
-      <nav class="navbar">
-        <div class="hamburger-menu">
-          <div class = "line line-1"></div>
-          <div class = "line line-2"></div>
-          <div class = "line line-3"></div>
-        </div>
-        <ul class="nav-list">
-          <p id="user-info" class="nav-link"></p>
-          <li class ="nav-item">
-            <a href="#" class = "nav-link" id = "signOut" >Sign out</a>
-          </li>
-          <li class ="nav-item">
+<body>
+  <div class="header">
+    <img src="flickworld.png" alt="logo" class="logo"/>
+
+    <nav class="navbar">
+      <div class="hamburger-menu">
+        <div class = "line line-1"></div>
+        <div class = "line line-2"></div>
+        <div class = "line line-3"></div>
+      </div>
+
+      <ul class="nav-list">
+        <p id="user-info" class="nav-link"></p>
+        <li class ="nav-item">
+          <a href="#" class = "nav-link" id = "signOut" >Sign out</a>
+        </li>
+        <li class ="nav-item">
             <a href="#" class = "nav-link" id="deleteAccount" style="color:#f44c44;">Delete Account</a>
-          </li>
-        </ul>
-      </nav>
-    </div>   
+        </li>
+      </ul>
+    </nav>
+  </div>  
 
-    <div class="bottom-contanier">
-      <div class="left-container">
-        <div class="sidenav">               <!-- These are the selectables on the sidebar -->
-          <div id="movie-posters-sidenav"></div>
-        </div>
-      </div>
-      <div class="right-container">
-        <h2></h2>
-        <div class="poster-container" id="poster-container" class="center">
-          <!-- Movie posters will be inserted here dynamically -->
-        </div>
-        <script src="homeindex.js"></script>
-        <a div class="button-container">
-          <button class="button dislike">➖</button>
-          <button class="button like">➕</button>
-        </a>
-      </div>
+  <div class="bottom-container">
+
+    <div class="left-container"> 
+      <div id="liked-cards-container" class="liked-cards-container"></div> 
     </div>
-  </body>
 
+    <div class="right-container">
+      
+      <div id="swiper"></div>
+      <div class="button-container">
+
+        <div class="button like" id="like">
+          <div class="plus-sign1"></div>
+          <div class="plus-sign2"></div>
+        </div>
+
+        <div class="button dislike" id="dislike">
+          <div class="minus-sign"></div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="./card.js"></script>
+  <script src="./script.js"></script>
   <script>
     const menuIcon = document.querySelector
     (".hamburger-menu");
@@ -94,7 +100,7 @@
         // Event listener for signing out
         signOutButton.addEventListener('click', () => {signOut(auth).then(() =>{
           // Sign-out successful
-          alert('User logged out'); window.location.href = 'login.html';}).catch((error) =>{
+          alert('User logged out'); window.location.href = 'Login.html';}).catch((error) =>{
             // Handle sign-out error
             const errorMessage = error.message; alert(errorMessage);
           });
@@ -113,7 +119,7 @@
             remove(userRef).then(() => {
               user.delete().then(() => {
               // Account deletion successful, Replace with your login page URL
-              alert('Account deleted'); window.location.href = 'login.html';}).catch((error) =>{
+              alert('Account deleted'); window.location.href = 'Login.html';}).catch((error) =>{
                 // Handle account deletion error
                 const errorMessage = error.message; alert(errorMessage);
               });  
@@ -129,8 +135,11 @@
         // User is signed out
         userInfoElement.textContent = 'Not logged in';
         // Replace with your login page URL
-        window.location.href = 'login.html'; 
+        window.location.href = 'Login.html'; 
       }
     });
   </script>
+
+
+</body>
 </html>
