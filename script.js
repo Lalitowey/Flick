@@ -5,10 +5,13 @@ const dislike = document.querySelector('#dislike');
 
 
 // constants
-const apiUrl = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc';
+const apiUrl = `https://api.themoviedb.org/3/discover/movie?with_genres=${genreFilter}`;
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTRhZjQ4YTRjZjlmYThkODA2OTA0ODM0ZDlhMDYyYiIsInN1YiI6IjY1MTRiYTI4OTNiZDY5MDEzOGZiZjQxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.E_AHqlFdOwGdJHZhcYHEFqsASC8XlhkxXAVvkrplQYI'; // Replace with your actual API key
 const urls = [];
 
+const selectedGenres = JSON.parse(localStorage.getItem('selectedGenres') || '[]');
+const genreIds = selectedGenres.map(genre => genre.split('-')[1]);
+const genreFilter = genreIds.join('%7C');
 
 //variables
 let cardCount = parseInt(localStorage.getItem('cardCount')) || 0;
