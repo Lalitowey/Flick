@@ -117,7 +117,7 @@
                 if (confirmRemove) {
                   // Remove the clicked cloned card from the left container
                   clonedCard.remove();
-
+                  window.location.reload();
                   // Remove the card URL from the liked cards array in local storage
                   const updatedLikedCards = likedCards.filter((url) => url !== cardUrl);
                   localStorage.setItem('likedCards', JSON.stringify(updatedLikedCards));
