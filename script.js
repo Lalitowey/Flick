@@ -14,58 +14,61 @@ const urls = [];
 
 //variables
 let cardCount = parseInt(localStorage.getItem('cardCount')) || 0;
-
+let df = [];
 //functions
-function fetchImages() {
-  fetch(apiUrl, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-    },
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Extract image URLs from the API response
-      const results = data.results;
-      if (results && results.length > 0) {
+async function fetchData(apiKey, totalPages) {
+    for (let i = 1; i <= totalPages; i++) {
+      const url = `${apiUrl}&page=${i}`;
+  
+      try {
+        const response =  await fetch(url, {  
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+          },
+        });
+        const data = await response.json();
+        const results = data.results;
+  
+        df = df.concat(results);
         const imageUrls = results.map(result => `https://image.tmdb.org/t/p/w500/${result.poster_path}`);
-        // Update the urls array with the new image URLs
-        urls.splice(0, urls.length, ...imageUrls);
-
-        // Append the new cards with the fetched image URLs
-        for (let i = 0; i < 10; i++) {
-          appendNewCard();
-        }
-      } else {
-        console.error('No results found in the API response.');
+        urls.push(...imageUrls);
+        console.log('Fetched image URLS: ', imageUrls);
+      } catch (error) {
+        console.error('Error fetching images:', error);
       }
-    })
-    .catch(error => console.error('Error fetching images:', error));
+  }
 }
 
 function appendNewCard() {
-  const card = new Card({
-    imageUrl: urls[cardCount % 10],
-    onDismiss: appendNewCard,
-    onLike: () => {
-      like.style.animationPlayState = 'running';
-      like.classList.toggle('trigger');
-    },
-    onDislike: () => {
-      dislike.style.animationPlayState = 'running';
-      dislike.classList.toggle('trigger');
-    },
-  });
-  swiper.append(card.element);
-  cardCount++;
-
-  const cards = swiper.querySelectorAll('.card:not(.dismissing)');
-  cards.forEach((card, index) => {
-    card.style.setProperty('--i', index);
-  });
-
-  // Save cardCount to localStorage
-  localStorage.setItem('cardCount', cardCount.toString());
+  console.log('Card count: ', cardCount, 'URLs length: ', urls.length);
+  if (cardCount < urls.length){
+    const card = new Card({
+      imageUrl: urls[cardCount],
+      onDismiss: appendNewCard,
+      onLike: () => {
+        like.style.animationPlayState = 'running';
+        like.classList.toggle('trigger');
+      },
+      onDislike: () => {
+        dislike.style.animationPlayState = 'running';
+        dislike.classList.toggle('trigger');
+      },
+    });
+    swiper.append(card.element);
+    cardCount++;
+    const cards = swiper.querySelectorAll('.card:not(.dismissing)');
+    cards.forEach((card, index) => {
+      card.style.setProperty('--i', index);
+    });
+    console.log('Appending new card with URL: ', urls[cardCount])
+    // Save cardCount to localStorage
+    localStorage.setItem('cardCount', cardCount.toString());
+  }
 }
 
 // Initial fetch and card creation
-fetchImages();
+fetchData(apiKey, 3).then(() => {
+  for (let i = 0; i < 10; i++) {
+    appendNewCard();
+  }
+});
