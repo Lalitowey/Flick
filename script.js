@@ -170,7 +170,8 @@ const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTRhZjQ4YTRjZjlmYThkODA2OTA0ODM
 const urls = [];
 
 //variables
-let cardCount = parseInt(localStorage.getItem('cardCount')) || 0;
+let cardCount = localStorage.getItem('cardCount') ? parseInt(localStorage.getItem('cardCount')) : 0;
+let posterCount = 0;
 let df = [];
 //functions
 async function fetchData(apiKey, totalPages) {
@@ -198,10 +199,20 @@ async function fetchData(apiKey, totalPages) {
 
 function appendNewCard() {
   console.log('Card count: ', cardCount, 'URLs length: ', urls.length);
-  if (cardCount < urls.length){
+  if(cardCount < urls.length) {
     const card = new Card({
       imageUrl: urls[cardCount],
-      onDismiss: appendNewCard,
+      onDismiss: () => {
+        cardCount++;
+        localStorage.setItem('cardCount', cardCount.toString());
+        appendNewCard();
+        posterCount--;
+        if (posterCount === 0) {
+          fetchData(apiKey, 3).then(() => {
+            posterCount = urls.length;
+          });
+        }
+      },
       onLike: () => {
         like.style.animationPlayState = 'running';
         like.classList.toggle('trigger');
@@ -212,20 +223,15 @@ function appendNewCard() {
       },
     });
     swiper.append(card.element);
-    cardCount++;
     const cards = swiper.querySelectorAll('.card:not(.dismissing)');
     cards.forEach((card, index) => {
       card.style.setProperty('--i', index);
     });
-    console.log('Appending new card with URL: ', urls[cardCount])
-    // Save cardCount to localStorage
-    localStorage.setItem('cardCount', cardCount.toString());
+    console.log('Appending new card with URL: ', urls[cardCount]);
   }
 }
 
-// Initial fetch and card creation
-fetchData(apiKey, 3).then(() => {
-  for (let i = 0; i < 10; i++) {
+fetchData(apiKey, 10).then(() => {
+    posterCount = urls.length
     appendNewCard();
-  }
 });
