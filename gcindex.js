@@ -77,7 +77,8 @@ fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
                 imgElement.src = posterUrl;
                 imgElement.alt = movie.title;
                 imgElement.className = 'poster-image';
-        
+
+                imgElement.dataset.genreIds = JSON.stringify(movie.genre_ids);
                 const posterButton = document.createElement('div');
                 posterButton.className = 'poster-button';
         
@@ -112,4 +113,17 @@ function getUserGenreChoices() {
             selectedGenres.push(checkboxes[i].id);
     }
     localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
+}
+let selectedPosters = [];
+function getUserPosterChoices() {
+    var posterButtons = document.getElementsByClassName('poster-button');
+    for(var i = 0; i < posterButtons.length; i++){
+        if (posterButtons[i].classList.contains('checked')){
+            let genreIds = JSON.parse(posterButtons[i].children[0].dataset.genreIds);
+            if (genreIds.length > 0) {
+                selectedPosters.push(genreIds[0]);
+            }
+        }
+    }
+    localStorage.setItem('selectedPosters', JSON.stringify(selectedPosters));
 }
