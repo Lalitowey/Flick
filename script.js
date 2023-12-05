@@ -161,6 +161,7 @@ const like = document.querySelector('#like');
 const dislike = document.querySelector('#dislike');
 
 const selectedGenres = JSON.parse(localStorage.getItem('selectedGenres') || '[]');
+const selectedPosters = JSON.parse(localStorage.getItem('selectedPosters') || '[]');
 const genreIds = selectedGenres.map(genre => genre.split('-')[1]);
 const genreFilter = genreIds.join('%7C');
 
