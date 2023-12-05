@@ -65,6 +65,13 @@ body                /*Mix of body and tinder classes*/
     height: 50px;
 }
 
+.loading{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    z-index:-10;
+}
+
 .button                 /*Comparable to tinder--buttons button*/
 {
     width: 60px;
