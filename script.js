@@ -179,7 +179,6 @@ const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MTRhZjQ4YTRjZjlmYThkODA2OTA0ODM
 const urls = [];
 
 //variables
-let cardCount = localStorage.getItem('cardCount') ? parseInt(localStorage.getItem('cardCount')) : 0;
 let posterCount = 0;
 let df = [];
 let cards = [];
@@ -207,6 +206,8 @@ async function fetchData(apiKey, totalPages) {
   }
 }
 
+let cardCount = localStorage.getItem('cardCount') ? parseInt(localStorage.getItem('cardCount')) : 0;
+
 function appendNewCard() {
   console.log('Card count: ', cardCount, 'URLs length: ', urls.length);
   if(cardCount < urls.length) {
@@ -233,9 +234,9 @@ function appendNewCard() {
       },
     });
     swiper.append(card.element);
-    const cards = swiper.querySelectorAll('.card:not(.dismissing)');
-    cards.forEach((card, index) => {
-      card.style.setProperty('--i', index);
+    const cardElements = swiper.querySelectorAll('.card:not(.dismissing)');
+    cardElements.forEach((cardElement, index) => {
+      cardElement.style.setProperty('--i', index);
     });
 	cards.push(card);
   }
