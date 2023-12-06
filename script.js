@@ -163,8 +163,7 @@ const dislike = document.querySelector('#dislike');
 const selectedGenres = JSON.parse(localStorage.getItem('selectedGenres') || '[]');
 const selectedPosters = JSON.parse(localStorage.getItem('selectedPosters') || '[]');
 const genreIds = selectedGenres.map(genre => genre.split('-')[1]);
-const posterIds = selectedPosters.map(element => `genre-${element}`);
-const genreFilter = genreIds.join('%7C');
+const genreFilter = genreIds.concat(selectedPosters).join('%7C');
 
 // constants
 const apiUrl = `https://api.themoviedb.org/3/discover/movie?with_genres=${genreFilter}`;
