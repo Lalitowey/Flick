@@ -13,6 +13,10 @@ class Card {
 		console.log('Creating card with image URL: ', imageUrl);
 	}
 
+	publicDismiss(direction){
+		this.#dismiss(direction);
+	}
+
 	//private properties
 	#startPoint;
 	#offsetX;
@@ -115,6 +119,10 @@ class Card {
 		this.element.classList.add('dismissing');
 		setTimeout(() => {
 			this.element.remove();
+			const index = cards.indexOf(this);
+			if (index > -1){
+				cards.splice(index, 1);
+			}
 		}, 1000);
 
 		if (typeof this.onDismiss === 'function'){
@@ -174,6 +182,7 @@ const urls = [];
 let cardCount = localStorage.getItem('cardCount') ? parseInt(localStorage.getItem('cardCount')) : 0;
 let posterCount = 0;
 let df = [];
+let cards = [];
 //functions
 async function fetchData(apiKey, totalPages) {
     for (let i = 1; i <= totalPages; i++) {
@@ -228,11 +237,34 @@ function appendNewCard() {
     cards.forEach((card, index) => {
       card.style.setProperty('--i', index);
     });
-    console.log('Appending new card with URL: ', urls[cardCount]);
+	cards.push(card);
+  }
+}
+
+// Function to make buttons swipe the card without needing to drag
+function swipeCard(direction) {
+  if (cards.length > 0) {
+	const topCard = cards[cards.length - 1];
+	const cardElement = topCard.element;
+
+	cardElement.style.transition = 'transform 1s ease-out';
+	cardElement.style.transform = `translateX(${direction * 100}vw) rotate(${direction * 70}deg)`;
+	
+	setTimeout(() => {
+		topCard.publicDismiss(direction);
+	}, 500);
   }
 }
 
 fetchData(apiKey, 10).then(() => {
     posterCount = urls.length
     appendNewCard();
+});
+// Event listeners
+like.addEventListener('click', () => {
+	swipeCard(-1);
+});
+
+dislike.addEventListener('click', () => {
+	swipeCard(1);
 });
