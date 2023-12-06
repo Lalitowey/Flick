@@ -115,15 +115,30 @@ function getUserGenreChoices() {
     localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
 }
 let selectedPosters = [];
+
 function getUserPosterChoices() {
     var posterButtons = document.getElementsByClassName('poster-button');
-    for(var i = 0; i < posterButtons.length; i++){
-        if (posterButtons[i].classList.contains('checked')){
+
+    // Create an array to store unique genre IDs
+    let uniqueGenreIds = [];
+
+    for (var i = 0; i < posterButtons.length; i++) {
+        if (posterButtons[i].classList.contains('checked')) {
             let genreIds = JSON.parse(posterButtons[i].children[0].dataset.genreIds);
+            
+            // Add the first genre ID to the array
             if (genreIds.length > 0) {
-                selectedPosters.push(genreIds[0]);
+                uniqueGenreIds.push(genreIds[0]);
             }
         }
     }
+
+    // Filter out duplicate genre IDs
+    uniqueGenreIds = [...new Set(uniqueGenreIds)];
+
+    // Store the unique genre IDs in the selectedPosters array
+    selectedPosters = uniqueGenreIds;
+
+    // Store the selectedPosters array in local storage
     localStorage.setItem('selectedPosters', JSON.stringify(selectedPosters));
 }
