@@ -14,7 +14,7 @@ class Card {
 	}
 
 	publicDismiss(direction){
-		this.#dismiss(direction);
+		this.#dissmiss(direction);
 	}
 
 	//private properties
