@@ -101,7 +101,7 @@
 
           userInfoElement.textContent = `Logged in as: ${loggedInUsername}`;
 
-           // Display liked cards from local storage
+           // Display liked cards from local storage Steven Peralta
             const likedCardsContainer = document.getElementById('liked-cards-container');
             const likedCards = JSON.parse(localStorage.getItem('likedCards')) || [];
             likedCards.forEach((cardUrl) => {
@@ -111,7 +111,7 @@
               img.src = cardUrl;
               clonedCard.appendChild(img);
 
-              // Add a click event listener for removal
+              // Add a click event listener for removal Steven Peralta
               clonedCard.addEventListener('click', () => {
                 const confirmRemove = window.confirm('Remove from watch list?');
                 if (confirmRemove) {
