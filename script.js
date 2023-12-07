@@ -1,3 +1,4 @@
+//Makes the card and the swipe. Steven Peralta
 class Card {
 	constructor({
 		imageUrl,
