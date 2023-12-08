@@ -115,7 +115,7 @@ function getUserGenreChoices() {
     localStorage.setItem('selectedGenres', JSON.stringify(selectedGenres));
 }
 let selectedPosters = [];
-
+//function gets user's selected posters and stores them in local storage
 function getUserPosterChoices() {
     var posterButtons = document.getElementsByClassName('poster-button');
 
