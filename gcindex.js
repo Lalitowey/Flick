@@ -105,6 +105,7 @@ fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
     .catch(err => console.error(err));
 
 let selectedGenres = [];
+//gets the user's selected genres and stores them in local storage
 function getUserGenreChoices() {
     var checkboxes = document.getElementsByClassName('genre-checkbox');
     for(var i = 0; i < checkboxes.length; i++){
