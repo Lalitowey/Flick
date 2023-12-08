@@ -17,12 +17,10 @@ class Card {
 	publicDismiss(direction){
 		this.#dissmiss(direction);
 	}
-
 	//private properties
 	#startPoint;
 	#offsetX;
 	#offsetY;
-
 
 	// Private methods
 	#init = ()=>{
@@ -34,7 +32,6 @@ class Card {
 		this.element = card;
 		this.#listenToMouseEvent();
 	}
-
 	#listenToMouseEvent = () => {
 		//mousedown
 		this.element.addEventListener('mousedown', e => {
@@ -52,7 +49,6 @@ class Card {
 		this.element.addEventListener('dragstart', e => {e.preventDefault();
 		});	
 	}
-
 	#handleMouseMove = (e) => {
 	    if (!this.#startPoint) return;
 	    const { clientX, clientY } = e;
@@ -70,7 +66,6 @@ class Card {
 	    	this.#dissmiss(direction);
 	    }
 	}
-
 	#handleMouseUp = (e) => {
 		this.#startPoint = null;
 		document.removeEventListener('mousemove', this.#handleMouseMove);
@@ -78,8 +73,6 @@ class Card {
 		this.element.style.transition = 'transform 0.5s';
 		this.element.style.transform = '';
 	}
-
-	/*
 	#cloneCard = () => {
         const clonedCard = this.element.cloneNode(true);
 
@@ -101,7 +94,6 @@ class Card {
 
         return clonedCard;
     }
-
     #removeClonedCard = (cardToRemove) => {
         // Remove the clicked cloned card from the left container
         cardToRemove.remove();
@@ -111,8 +103,6 @@ class Card {
             this.onDismiss();
         }
     }
-	*/
-
 	#dissmiss = (direction) => {
 		this.#startPoint = null;
 		document.removeEventListener('mouseup', this.#handleMouseUp);
@@ -262,13 +252,13 @@ function swipeCard(direction) {
 	}, 500);
   }
 }
-
+//initial fetch, totalPages = 10 -> 200 movies are called. totalPages must be kept within 1 - 500 but going over 20 makes it incredibly slow.  
 fetchData(apiKey, 10).then(() => {
     posterCount = urls.length
     appendNewCard();
 });
 
-// Event listeners
+// Event listeners for the swipeCard function.
 like.addEventListener('click', () => {
 	swipeCard(-1);
 });
