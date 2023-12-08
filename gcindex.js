@@ -25,7 +25,7 @@ function limitCheckboxes(checkboxes, limit) {
     });
 }
 
- // this function pulls genres from the TMDB and creates the genre buttons that behave as checkboxes
+// this function pulls genres from the TMDB and creates the genre buttons that behave as checkboxes
 function fetchGenresAndCreateCheckboxes() {
     fetch('https://api.themoviedb.org/3/genre/movie/list', options)
         .then(response => response.json())
@@ -54,9 +54,9 @@ function fetchGenresAndCreateCheckboxes() {
         })
         .catch(err => console.error(err));
 }
+
 // this calls the function and creates the buttons (checkboxes).
 fetchGenresAndCreateCheckboxes();
-
 
 //fetching our movie/show list. link can be replaced from TMDB documentation at user discretion.
 //also contains logic for checkbox limiting behavior. 
@@ -106,7 +106,6 @@ fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
 
 let selectedGenres = [];
 function getUserGenreChoices() {
-
     var checkboxes = document.getElementsByClassName('genre-checkbox');
     for(var i = 0; i < checkboxes.length; i++){
         if (checkboxes[i].checked == true)

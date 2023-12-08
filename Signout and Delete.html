@@ -6,16 +6,14 @@
   <title>Profile</title>
 </head>
 <body>
-<h1>Profile</h1>
+  <h1>Profile</h1>
+  <div id="profile-box">
+    <h1>Signout/Delete</h1>
 
-<div id="profile-box">
-  <h1>Signout/Delete</h1>
-
-  <p id="user-info"></p>
-    <button id="signOut">Sign Out</button>
-    <button id="deleteAccount">Delete Account</button>
-</div>
-
+    <p id="user-info"></p>
+      <button id="signOut">Sign Out</button>
+      <button id="deleteAccount">Delete Account</button>
+  </div>
 </body>
 
 <script type="module">
@@ -49,7 +47,7 @@
       userInfoElement.textContent = `Logged in as: ${user.email}`;
 
       // Event listener for signing out
-  signOutButton.addEventListener('click', () => {   
+      signOutButton.addEventListener('click', () => {   
       signOut(auth).then(() => {
         // Sign-out successful
 
@@ -66,40 +64,40 @@
       });
 
       // Event listener for deleting the account
-deleteAccountButton.addEventListener('click', () => {
-  // Check if the user is signed in
-  if (user) {
-    // Reference to the user's data in the database
-    const userRef = ref(database, `users/${user.uid}`);
+      deleteAccountButton.addEventListener('click', () => {
+        // Check if the user is signed in
+        if (user) {
+          // Reference to the user's data in the database
+          const userRef = ref(database, `users/${user.uid}`);
 
-    // Delete the user's data from the database
-    remove(userRef)
-      .then(() => {
-        // Data deletion successful
-
-        // Now, delete the user's account
-        user.delete()
+          // Delete the user's data from the database
+          remove(userRef)
           .then(() => {
-            // Account deletion successful
-            alert('Account deleted');
-            window.location.href = 'login.html'; // Replace with your login page URL
+          // Data deletion successful
+
+          // Now, delete the user's account
+          user.delete()
+            .then(() => {
+              // Account deletion successful
+              alert('Account deleted');
+              window.location.href = 'login.html'; // Replace with your login page URL
+            })
+            .catch((error) => {
+              // Handle account deletion error
+              const errorMessage = error.message;
+              alert(errorMessage);
+            });
           })
           .catch((error) => {
-            // Handle account deletion error
+            // Handle data deletion error
             const errorMessage = error.message;
             alert(errorMessage);
           });
-      })
-      .catch((error) => {
-        // Handle data deletion error
-        const errorMessage = error.message;
-        alert(errorMessage);
+        } else {
+          // User is not signed in, handle accordingly
+          alert('User is not signed in');
+        }
       });
-  } else {
-    // User is not signed in, handle accordingly
-    alert('User is not signed in');
-  }
-});
     } else {
       // User is signed out
       userInfoElement.textContent = 'Not logged in';
@@ -108,7 +106,5 @@ deleteAccountButton.addEventListener('click', () => {
 
     }
   });
-
 </script>
-
 </html>

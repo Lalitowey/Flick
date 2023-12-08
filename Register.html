@@ -8,29 +8,22 @@
   <title>Register</title>
 </head>
 <body>
-
-<div id="Register-box">
-  <div class="left">
-    <h1>Sign up</h1>
-    <input type="text" id="username" name="username" placeholder="Username" />
-    <input type="text" id="email" name="email" placeholder="E-mail" />
-    <input type="password" id="password" name="password" placeholder="Password" />
-    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
-    <p>Password must include: <br>One Uppercase letter, <br>One Lowercase letter, One number, Minimum 8 characters</p>
-
-    <input type="submit" id="signUp" name="signup_submit" value="Sign up" />
+  <div id="Register-box">
+    <div class="left">
+      <h1>Sign up</h1>
+      <input type="text" id="username" name="username" placeholder="Username" />
+      <input type="text" id="email" name="email" placeholder="E-mail" />
+      <input type="password" id="password" name="password" placeholder="Password" />
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" />
+      <p>Password must include: <br>One Uppercase letter, <br>One Lowercase letter, One number, Minimum 8 characters</p>
+      <input type="submit" id="signUp" name="signup_submit" value="Sign up" />
+    </div>
+    <div id= "ready">
+      Already have an account? <a href="login.html">Log In</a>
+    </div>
+    <div></div>
   </div>
-
-<div id= "ready">
-Already have an account? <a href="login.html">Log In</a>
-</div>
-
-<div>
-</div>
-
-</div>
 </body>
-
 <script type="module">
   //Made the Firebase for Register Steven Peralta
   // Import the functions you need from the SDKs you need
@@ -57,59 +50,57 @@ Already have an account? <a href="login.html">Log In</a>
   const database = getDatabase(app);
   const auth = getAuth();
 
-signUp.addEventListener('click',(e) => {
+  signUp.addEventListener('click',(e) => {
 
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  var confirmPassword = document.getElementById('confirmPassword').value
-  var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value
+    var username = document.getElementById('username').value;
 
-  if (password.length < 8 || password.length > 12) {
-    alert('Password must be between 8 and 12 charcters.');
-    return;
-  }
+    if (password.length < 8 || password.length > 12) {
+      alert('Password must be between 8 and 12 charcters.');
+      return;
+    }
 
-  if(
-      !/[A-Z]/.test(password) ||
-      !/[a-z]/.test(password) ||
-      !/\d/.test(password)
-    ) {
-      alert('Password must contain at least one lowercase, one uppercase, one number.');
-    return;
-  }
+    if(
+        !/[A-Z]/.test(password) ||
+        !/[a-z]/.test(password) ||
+        !/\d/.test(password)
+      ) {
+        alert('Password must contain at least one lowercase, one uppercase, one number.');
+        return;
+    }
 
-   if (password !== confirmPassword) {
-    alert('Passwords do not match. Please try again.');
-    return; // Exit the function if passwords don't match
-  }
+    if (password !== confirmPassword) {
+      alert('Passwords do not match. Please try again.');
+      return; // Exit the function if passwords don't match
+    }
 
- createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      
+      return set(ref(database, 'users/' + user.uid),{
+        username: username,
+        email: email
+      });
+    })
+    .then(() => {
     
-    return set(ref(database, 'users/' + user.uid),{
-      username: username,
-      email: email
-    });
+      alert('user created!');
+
+      window.location.href = 'Login.html';
+      // ...
   })
-  .then(() => {
-  
-    alert('user created!');
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
 
-    window.location.href = 'Login.html';
-    // ...
- })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-
-    alert(errorMessage);
-    // ..
-  });
+      alert(errorMessage);
+      // ..
+    });
 
 });
-
 </script>
-
 </html>

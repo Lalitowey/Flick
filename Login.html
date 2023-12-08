@@ -8,113 +8,107 @@
     <title>Login</title>
 </head>
 <body>
+  <div id="login-box">
+      <div class="left">
+          <br />
+          <br />
 
-    <div id="login-box">
-        <div class="left">
-            <br />
-            <br />
+          <h1>Login</h1>
+          <input type="text" id="email" name="email" placeholder="E-mail" />
+          <input type="password" id="password" name="password" placeholder="Password" />
 
-            <h1>Login</h1>
-            <input type="text" id="email" name="email" placeholder="E-mail" />
-            <input type="password" id="password" name="password" placeholder="Password" />
+          <p></p>
 
-            <p></p>
+          <input type="submit" id="login" name="login" value="Login" />
 
-            <input type="submit" id="login" name="login" value="Login" />
+          <p></p>
 
-            <p></p>
+          <div id="forgot">
+              <a href="Reset.html">Forgot Password</a>
+          </div>
 
-            <div id="forgot">
-                <a href="Reset.html">Forgot Password</a>
-            </div>
+          <div id="Dont">
+              Don't have an account? <a href="Register.html">Register here</a>
+          </div>
+      </div>
+  </div>
+  <script type="module">
+      //Made Login Firebase Steven Peralta
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+      import { getDatabase, ref, update, get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
-            <div id="Dont">
-                Don't have an account? <a href="Register.html">Register here</a>
-            </div>
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
 
-        </div>
-    </div>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+          apiKey: "AIzaSyCrXnG6H615rquhLI-hamYrz2GgLrflf2A",
+          authDomain: "flicker-8a847.firebaseapp.com",
+          databaseURL: "https://flicker-8a847-default-rtdb.firebaseio.com",
+          projectId: "flicker-8a847",
+          storageBucket: "flicker-8a847.appspot.com",
+          messagingSenderId: "24731055597",
+          appId: "1:24731055597:web:641a8977ab552fd98de3e4"
+      };
 
-
-
-    <script type="module">
-        //Made Login Firebase Steven Peralta
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getDatabase, ref, update, get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyCrXnG6H615rquhLI-hamYrz2GgLrflf2A",
-            authDomain: "flicker-8a847.firebaseapp.com",
-            databaseURL: "https://flicker-8a847-default-rtdb.firebaseio.com",
-            projectId: "flicker-8a847",
-            storageBucket: "flicker-8a847.appspot.com",
-            messagingSenderId: "24731055597",
-            appId: "1:24731055597:web:641a8977ab552fd98de3e4"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
-        const auth = getAuth();
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const auth = getAuth();
 
 
-        login.addEventListener('click',(e) => {
-          var email = document.getElementById('email').value;
-          var password = document.getElementById('password').value;
-        
-        
-          signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-              // Signed in 
-              const user = userCredential.user;
-        
-              const userRef = ref(database, 'users/' + user.uid);
-        
-                get(userRef).then((snapshot) => {
-                  const userData = snapshot.val();
-        
-                  if (userData && userData.loginCount && userData.loginCount > 0) {
-                    alert('User logged in!')
-                    window.location.href = 'home.html';
-                  } else {
-                    update(userRef, {
-                      loginCount: 1
-                    }).then(() => {
-                      alert('User first login!');
-        
-                      window.location.href = 'genrecloud.html';
-                    }).catch((error) => {
-                      console.error('Error updating login count:', error);
-                    });
-                  }
-                }).catch((error) => {
-                  console.error('Error retrieving user data:', error);
-                });
-              })
-              .catch((error) => {
-                const errorMessage = error.message;
-        
-                alert(errorMessage);
+      login.addEventListener('click',(e) => {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+      
+      
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+      
+            const userRef = ref(database, 'users/' + user.uid);
+      
+              get(userRef).then((snapshot) => {
+                const userData = snapshot.val();
+      
+                if (userData && userData.loginCount && userData.loginCount > 0) {
+                  alert('User logged in!')
+                  window.location.href = 'home.html';
+                } else {
+                  update(userRef, {
+                    loginCount: 1
+                  }).then(() => {
+                    alert('User first login!');
+      
+                    window.location.href = 'genrecloud.html';
+                  }).catch((error) => {
+                    console.error('Error updating login count:', error);
+                  });
+                }
+              }).catch((error) => {
+                console.error('Error retrieving user data:', error);
               });
-          });
-
-    </script>
-    <!--script for loading a gif before page loads-->
-    <script>
-        var loader;
-        function gifLoader() {
-            loader = setTimeout(onpageshow, 3000);
-        }
-        function onpageshow() {
-            document.getElementsByClassName('screen-loader').style.display = "none";
-            document.getElementById('login-box').style.display = "block";
-        }
-    </script>
+            })
+            .catch((error) => {
+              const errorMessage = error.message;
+      
+              alert(errorMessage);
+            });
+        });
+  </script>
+  <!--script for loading a gif before page loads-->
+  <script>
+      var loader;
+      function gifLoader() {
+          loader = setTimeout(onpageshow, 3000);
+      }
+      function onpageshow() {
+          document.getElementsByClassName('screen-loader').style.display = "none";
+          document.getElementById('login-box').style.display = "block";
+      }
+  </script>
 </body>
 </html>

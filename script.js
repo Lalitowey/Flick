@@ -46,10 +46,11 @@ class Card {
 		});
 
 		//mouseup
-	document.addEventListener('mouseup', this.#handleMouseUp);
+		document.addEventListener('mouseup', this.#handleMouseUp);
+
 		//prevent drag
-	this.element.addEventListener('dragstart', e => {e.preventDefault();
-	});	
+		this.element.addEventListener('dragstart', e => {e.preventDefault();
+		});	
 	}
 
 	#handleMouseMove = (e) => {
@@ -63,10 +64,10 @@ class Card {
 	    this.element.style.transform = `translate(${this.#offsetX}px, ${this.#offsetY}px) rotate(${rotate}deg)`;
 	
 	    //dismiss card when moving too far away
-	    if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7) {
+	    if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7)
+		{
 	    	const direction = this.#offsetX > 0 ? 1 : -1;
 	    	this.#dissmiss(direction);
-
 	    }
 	}
 
@@ -78,7 +79,8 @@ class Card {
 		this.element.style.transform = '';
 	}
 
-	 #cloneCard = () => {
+	/*
+	#cloneCard = () => {
         const clonedCard = this.element.cloneNode(true);
 
         // Remove the dismissing class and transform style
@@ -109,6 +111,7 @@ class Card {
             this.onDismiss();
         }
     }
+	*/
 
 	#dissmiss = (direction) => {
 		this.#startPoint = null;
@@ -140,9 +143,9 @@ class Card {
 			const img = document.createElement('img');
 			img.src = this.imageUrl;
 			clonedCard.appendChild(img);
-	// 1 - Create var that holds current # of movie posters 
-	// 2 - Only use GET requeset when tha var == 0
-	// 3 - iF var != 0 when user makes decision on poster then decrement var by 1
+			// 1 - Create var that holds current # of movie posters 
+			// 2 - Only use GET requeset when tha var == 0
+			// 3 - iF var != 0 when user makes decision on poster then decrement var by 1
 			console.log('like');
 
 			saveLikedCardsToLocalStorage(this.imageUrl);
@@ -164,6 +167,7 @@ function saveLikedCardsToLocalStorage(cardUrl) {
   // Save the updated liked cards array back to local storage
   localStorage.setItem('likedCards', JSON.stringify(likedCards));
 }
+
 // DOM
 const swiper = document.querySelector('#swiper');
 const like = document.querySelector('#like');
@@ -183,6 +187,7 @@ const urls = [];
 let posterCount = 0;
 let df = [];
 let cards = [];
+
 //functions
 async function fetchData(apiKey, totalPages) {
     for (let i = 1; i <= totalPages; i++) {
@@ -262,6 +267,7 @@ fetchData(apiKey, 10).then(() => {
     posterCount = urls.length
     appendNewCard();
 });
+
 // Event listeners
 like.addEventListener('click', () => {
 	swipeCard(-1);

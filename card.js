@@ -1,3 +1,4 @@
+// All content seen here was transfered to script.js
 // class Card {
 // 	constructor({
 // 		imageUrl,
