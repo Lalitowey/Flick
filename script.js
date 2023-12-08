@@ -179,6 +179,8 @@ let df = [];
 let cards = [];
 
 //functions
+
+//function which fetches the images from the API
 async function fetchData(apiKey, totalPages) {
     for (let i = 1; i <= totalPages; i++) {
       const url = `${apiUrl}&page=${i}`;
@@ -204,6 +206,7 @@ async function fetchData(apiKey, totalPages) {
 
 let cardCount = localStorage.getItem('cardCount') ? parseInt(localStorage.getItem('cardCount')) : 0;
 
+//Function to append a new card to the swiper
 function appendNewCard() {
   console.log('Card count: ', cardCount, 'URLs length: ', urls.length);
   if(cardCount < urls.length) {
